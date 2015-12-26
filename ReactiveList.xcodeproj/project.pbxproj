@@ -15,6 +15,8 @@
 		404437391C2EC36200272117 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 404437371C2EC36200272117 /* LaunchScreen.storyboard */; };
 		404437441C2EC36200272117 /* ReactiveListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404437431C2EC36200272117 /* ReactiveListTests.swift */; };
 		4044374F1C2EC36200272117 /* ReactiveListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4044374E1C2EC36200272117 /* ReactiveListUITests.swift */; };
+		4065791D1C2EFA43009F7F17 /* TaskListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065791C1C2EFA43009F7F17 /* TaskListTVC.swift */; };
+		406579201C2EFD9A009F7F17 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065791F1C2EFD9A009F7F17 /* R.generated.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,8 @@
 		4044374A1C2EC36200272117 /* ReactiveListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReactiveListUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4044374E1C2EC36200272117 /* ReactiveListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveListUITests.swift; sourceTree = "<group>"; };
 		404437501C2EC36200272117 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4065791C1C2EFA43009F7F17 /* TaskListTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskListTVC.swift; sourceTree = "<group>"; };
+		4065791F1C2EFD9A009F7F17 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		8D877B19A80F9B98769CEAEF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -82,6 +86,7 @@
 		404437221C2EC36100272117 = {
 			isa = PBXGroup;
 			children = (
+				4065791F1C2EFD9A009F7F17 /* R.generated.swift */,
 				4044372D1C2EC36200272117 /* ReactiveList */,
 				404437421C2EC36200272117 /* ReactiveListTests */,
 				4044374D1C2EC36200272117 /* ReactiveListUITests */,
@@ -104,6 +109,7 @@
 		4044372D1C2EC36200272117 /* ReactiveList */ = {
 			isa = PBXGroup;
 			children = (
+				406579191C2EF9D1009F7F17 /* Controllers */,
 				4044372E1C2EC36200272117 /* AppDelegate.swift */,
 				404437301C2EC36200272117 /* ViewController.swift */,
 				404437321C2EC36200272117 /* Main.storyboard */,
@@ -132,6 +138,14 @@
 			path = ReactiveListUITests;
 			sourceTree = "<group>";
 		};
+		406579191C2EF9D1009F7F17 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4065791C1C2EFA43009F7F17 /* TaskListTVC.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		933D0F90285F68F7E7CB00E5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +171,7 @@
 			buildConfigurationList = 404437531C2EC36200272117 /* Build configuration list for PBXNativeTarget "ReactiveList" */;
 			buildPhases = (
 				E10BF04BF63B2C74A887689E /* Check Pods Manifest.lock */,
+				4065791E1C2EFD1B009F7F17 /* ShellScript */,
 				404437271C2EC36100272117 /* Sources */,
 				404437281C2EC36100272117 /* Frameworks */,
 				404437291C2EC36100272117 /* Resources */,
@@ -279,6 +294,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		4065791E1C2EFD1B009F7F17 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" \"$SRCROOT\"";
+		};
 		9E66FA76AE60EAA75F960E42 /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -333,6 +361,8 @@
 			files = (
 				404437311C2EC36200272117 /* ViewController.swift in Sources */,
 				4044372F1C2EC36200272117 /* AppDelegate.swift in Sources */,
+				4065791D1C2EFA43009F7F17 /* TaskListTVC.swift in Sources */,
+				406579201C2EFD9A009F7F17 /* R.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
