@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
+
 
 class TaskListTVC: UITableViewController {
 
@@ -18,15 +21,21 @@ class TaskListTVC: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        
+        let data = getDataSignal()
+        data.subscribeNext { (model:TaskListModel) -> Void in
+            print("Task list: \(model)")
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    
     // MARK: - Table view data source
-
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 2
@@ -50,6 +59,14 @@ class TaskListTVC: UITableViewController {
         return cell
     }
     
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0: return "Pending"
+        case 1: return "Done"
+        default: return "?"
+        }
+        
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -96,4 +113,23 @@ class TaskListTVC: UITableViewController {
     }
     */
 
+    
+    
+    // MARK: - Reactive extensions
+    func getDataSignal() -> Observable<TaskListModel> {
+        return RxSwift.create {
+            observer in
+
+            let tasks:[TaskItem] = [
+                TaskItem(title:"Wash car", state: .Pending, estimate: 2),
+                TaskItem(title:"Clean windows", state: .Pending, estimate: 4)
+            ]
+            let mockModel = TaskListModel(tasks:tasks)
+            
+            observer.onNext(mockModel)
+            
+            return AnonymousDisposable() {}
+        }
+    }
+    
 }
