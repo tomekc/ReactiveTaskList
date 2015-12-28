@@ -13,6 +13,9 @@ import RxCocoa
 
 class TaskListTVC: UITableViewController {
 
+    let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String,TaskItem>>()
+    let disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,13 +25,38 @@ class TaskListTVC: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
+        self.tableView.dataSource = nil
+        self.tableView.delegate = nil
         
-        let data = getDataSignal()
-        data.subscribeNext { (model:TaskListModel) -> Void in
-            print("Task list: \(model)")
-        }
-    }
+        dataSource.cellFactory = {
+            (tv, ip, item:TaskItem) in
+            let cell:UITableViewCell = tv.dequeueReusableCellWithIdentifier(R.reuseIdentifier.taskListCell, forIndexPath:ip)!
+            cell.textLabel?.text = item.title
+            cell.detailTextLabel?.text = "\(item.estimate) hrs"
 
+            return cell
+        }
+
+        let pendingItems = { (item:TaskItem) -> Bool in item.state == .Pending }
+        let doneItems = { (item:TaskItem) -> Bool in item.state == .Done }
+        
+        
+        getDataSignal().map {
+            [
+                SectionModel(model: "Pending", items: $0.tasks.filter(pendingItems) ),
+                SectionModel(model: "Completed", items: $0.tasks.filter(doneItems) )
+            ]
+        }.bindTo(self.tableView.rx_itemsWithDataSource(dataSource))
+        .addDisposableTo(disposeBag)
+        
+        self.tableView.rx_itemSelected.subscribeNext { (ip:NSIndexPath) -> Void in
+            
+            print("Selected item \(ip)")
+            
+        }.addDisposableTo(disposeBag)
+       
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -122,7 +150,9 @@ class TaskListTVC: UITableViewController {
 
             let tasks:[TaskItem] = [
                 TaskItem(title:"Wash car", state: .Pending, estimate: 2),
-                TaskItem(title:"Clean windows", state: .Pending, estimate: 4)
+                TaskItem(title:"Clean windows", state: .Pending, estimate: 4),
+                TaskItem(title:"Replace bulbs", state: .Done, estimate: 1)
+                
             ]
             let mockModel = TaskListModel(tasks:tasks)
             

@@ -27,7 +27,6 @@
 		409145321C2F5E740004FF08 /* RxTableViewSectionedReloadDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409145231C2F5E740004FF08 /* RxTableViewSectionedReloadDataSource.swift */; };
 		409145331C2F5E740004FF08 /* Differentiator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409145241C2F5E740004FF08 /* Differentiator.swift */; };
 		409145341C2F5E740004FF08 /* ObservableConvertibleType+Differentiator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409145251C2F5E740004FF08 /* ObservableConvertibleType+Differentiator.swift */; };
-		409145351C2F5E740004FF08 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 409145261C2F5E740004FF08 /* README.md */; };
 		409145361C2F5E740004FF08 /* RxDataSourceStarterKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409145271C2F5E740004FF08 /* RxDataSourceStarterKit.swift */; };
 		409145371C2F5E740004FF08 /* SectionedViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409145281C2F5E740004FF08 /* SectionedViewType.swift */; };
 		409145381C2F5E740004FF08 /* SectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409145291C2F5E740004FF08 /* SectionModel.swift */; };
@@ -447,7 +446,6 @@
 				406579231C2EFF7F009F7F17 /* Models.swift in Sources */,
 				409145301C2F5E740004FF08 /* RxTableViewSectionedAnimatedDataSource.swift in Sources */,
 				4065791D1C2EFA43009F7F17 /* TaskListTVC.swift in Sources */,
-				409145351C2F5E740004FF08 /* README.md in Sources */,
 				4091452E1C2F5E740004FF08 /* RxCollectionViewSectionedDataSource.swift in Sources */,
 				406579201C2EFD9A009F7F17 /* R.generated.swift in Sources */,
 				409145391C2F5E740004FF08 /* SectionModelType.swift in Sources */,
