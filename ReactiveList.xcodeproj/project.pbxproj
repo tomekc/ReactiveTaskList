@@ -15,6 +15,8 @@
 		404437391C2EC36200272117 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 404437371C2EC36200272117 /* LaunchScreen.storyboard */; };
 		404437441C2EC36200272117 /* ReactiveListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404437431C2EC36200272117 /* ReactiveListTests.swift */; };
 		4044374F1C2EC36200272117 /* ReactiveListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4044374E1C2EC36200272117 /* ReactiveListUITests.swift */; };
+		4048F1A51C317C3900918EFF /* Flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4048F1A41C317C3900918EFF /* Flow.swift */; };
+		4048F1A71C3181CE00918EFF /* Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4048F1A61C3181CE00918EFF /* Commands.swift */; };
 		4065791D1C2EFA43009F7F17 /* TaskListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065791C1C2EFA43009F7F17 /* TaskListTVC.swift */; };
 		406579201C2EFD9A009F7F17 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4065791F1C2EFD9A009F7F17 /* R.generated.swift */; };
 		406579231C2EFF7F009F7F17 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406579221C2EFF7F009F7F17 /* Models.swift */; };
@@ -67,6 +69,8 @@
 		4044374A1C2EC36200272117 /* ReactiveListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReactiveListUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4044374E1C2EC36200272117 /* ReactiveListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveListUITests.swift; sourceTree = "<group>"; };
 		404437501C2EC36200272117 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4048F1A41C317C3900918EFF /* Flow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flow.swift; sourceTree = "<group>"; };
+		4048F1A61C3181CE00918EFF /* Commands.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Commands.swift; sourceTree = "<group>"; };
 		4065791C1C2EFA43009F7F17 /* TaskListTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskListTVC.swift; sourceTree = "<group>"; };
 		4065791F1C2EFD9A009F7F17 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		406579221C2EFF7F009F7F17 /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
@@ -183,6 +187,8 @@
 			isa = PBXGroup;
 			children = (
 				406579221C2EFF7F009F7F17 /* Models.swift */,
+				4048F1A41C317C3900918EFF /* Flow.swift */,
+				4048F1A61C3181CE00918EFF /* Commands.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -431,6 +437,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				404437311C2EC36200272117 /* ViewController.swift in Sources */,
+				4048F1A51C317C3900918EFF /* Flow.swift in Sources */,
 				4091453A1C2F5E740004FF08 /* UISectionedViewType+RxAnimatedDataSource.swift in Sources */,
 				4091452D1C2F5E740004FF08 /* RxCollectionViewSectionedAnimatedDataSource.swift in Sources */,
 				409145371C2F5E740004FF08 /* SectionedViewType.swift in Sources */,
@@ -445,6 +452,7 @@
 				409145381C2F5E740004FF08 /* SectionModel.swift in Sources */,
 				406579231C2EFF7F009F7F17 /* Models.swift in Sources */,
 				409145301C2F5E740004FF08 /* RxTableViewSectionedAnimatedDataSource.swift in Sources */,
+				4048F1A71C3181CE00918EFF /* Commands.swift in Sources */,
 				4065791D1C2EFA43009F7F17 /* TaskListTVC.swift in Sources */,
 				4091452E1C2F5E740004FF08 /* RxCollectionViewSectionedDataSource.swift in Sources */,
 				406579201C2EFD9A009F7F17 /* R.generated.swift in Sources */,

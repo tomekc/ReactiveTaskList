@@ -16,6 +16,8 @@ class TaskListTVC: UITableViewController {
     let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String,TaskItem>>()
     let disposeBag = DisposeBag()
     
+    var changes = Variable([TaskMutatingCommand]())
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,24 +39,42 @@ class TaskListTVC: UITableViewController {
             return cell
         }
 
-        let pendingItems = { (item:TaskItem) -> Bool in item.state == .Pending }
-        let doneItems = { (item:TaskItem) -> Bool in item.state == .Done }
+        let pendingItemsOnly = { (item:TaskItem) -> Bool in item.state == .Pending }
+        let doneItemsOnly = { (item:TaskItem) -> Bool in item.state == .Done }
         
         
-        getDataSignal().map {
+        combineLatest(getDataSignal(), changes) { (src:TaskListModel, cmds:[TaskMutatingCommand]) -> TaskListModel in
+            
+            var ret:TaskListModel = src
+            for c in cmds {
+                ret = c.handle(ret)
+            }
+            
+            return ret
+        }.map {
             [
-                SectionModel(model: "Pending", items: $0.tasks.filter(pendingItems) ),
-                SectionModel(model: "Completed", items: $0.tasks.filter(doneItems) )
+                SectionModel(model: "Pending", items: $0.tasks.filter(pendingItemsOnly) ),
+                SectionModel(model: "Completed", items: $0.tasks.filter(doneItemsOnly) )
             ]
         }.bindTo(self.tableView.rx_itemsWithDataSource(dataSource))
         .addDisposableTo(disposeBag)
         
         self.tableView.rx_itemSelected.subscribeNext { (ip:NSIndexPath) -> Void in
-            
             print("Selected item \(ip)")
-            
+            let cell = self.tableView.cellForRowAtIndexPath(ip)
+            self.markAsDone(cell?.textLabel?.text ?? "")
         }.addDisposableTo(disposeBag)
        
+        
+        changes.subscribeNext { (commands:[TaskMutatingCommand]) -> Void in
+            print("Commands changed: \(commands)")
+        }.addDisposableTo(disposeBag)
+    }
+    
+    func markAsDone(title:String) {
+        var changeList:[TaskMutatingCommand] = changes.value
+        changeList.append(MarkAsDoneCommand(_title: title))
+        changes.value = changeList
     }
     
     override func didReceiveMemoryWarning() {

@@ -22,3 +22,8 @@ public struct TaskItem {
 public struct TaskListModel {
     var tasks:[TaskItem]    
 }
+
+protocol TaskMutatingCommand {
+    func handle(input:TaskListModel) -> TaskListModel
+}
+
